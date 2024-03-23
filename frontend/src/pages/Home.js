@@ -1,4 +1,5 @@
 import React from "react";
+import { NavBar } from '../components/NavBar'; 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +39,11 @@ export default function Home() {
                     transition={{ duration: 1 }}
                     className="text-4xl font-bold"
                 >
-                    <h1 id="text">Welcome to the Home Page</h1>
+                    <NavBar />
+                    <div className="text-blue">
+                        <h1>ChainityCharity</h1>
+                        <p>This text will be blue.</p>
+                    </div>
                 </div>
             </div>
         </>
