@@ -3,15 +3,3 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
 
-/* app.css */
-
-/* Set white background */
-body {
-    background-color: #ffffff; /* White background */
-  }
-  
-  /* Set blue text */
-  .text-blue {
-    color: #007bff; /* Blue color */
-  }
-  
