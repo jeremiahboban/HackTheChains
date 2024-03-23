@@ -11,6 +11,7 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import React, {useMemo} from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
+import Contributions from "./pages/Contributions";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/donate" element={<Donate />} />
+              <Route path="/contributions" element={<Contributions />} />
           </Routes>
       </BrowserRouter>
       <div>
