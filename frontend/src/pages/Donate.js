@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { connect } from "../components/WalletAdapter";
 
-export default function Donate() {
+export function Donate() {
+    const [connected, setConnected] = useState(false);
+    const [connection, setConnection] = useState(null);
+
+    useEffect(() => {
+        const connectWallet = async () => {
+            const adapter = await connect();
+            if (adapter) {
+                setConnected(true);
+                setConnection(adapter);
+            }
+        };
+        connectWallet();
+    }, []);
+
+    const handleConnectWallet = async () => {
+        const adapter = await connect();
+        if (adapter) {
+            setConnected(true);
+            setConnection(adapter);
+        }
+    };
+
     return (
-        <>
-            <NavBar active="donate"/>
-        </>
+        <div>
+            <NavBar active="donate" />
+          
+        </div>
     );
 }
+
+export default Donate;

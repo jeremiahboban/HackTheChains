@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TiltCard from "../components/BenefitsTile.js";
+import ToTopButton from "../components/ToTopButtom.js";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -52,6 +53,8 @@ export default function Home() {
         <>
             <NavBar />
             <div className="bg-blue-500 min-h-screen">
+
+                <ToTopButton />
                 {/* Hero Section */}
                 <div className="bg-blue-500 text-white py-20 px-4">
                     <div className="max-w-4xl mx-auto text-center">

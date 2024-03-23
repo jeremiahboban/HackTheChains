@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Contributions() {
     return (
         <>
-            <NavBar active="contributions"/>
+            <NavBar active="contributions" />
         </>
     );
 }
