@@ -71,6 +71,7 @@ const Content = () => {
 
                 const responseData = await response.json();
                 const transactions = responseData.result;
+                console.log( JSON.stringify(transactions))
 
                 if (Array.isArray(transactions)) {
                     const detailedTransactions = await Promise.all(
@@ -85,12 +86,13 @@ const Content = () => {
                                     body: JSON.stringify({
                                         jsonrpc: '2.0',
                                         id: 1,
-                                        method: 'getConfirmedTransaction',
+                                        method: 'getTransaction',
                                         params: [signature],
                                     }),
                                 }
                             );
                             const txData = await txResponse.json();
+                            console.log(JSON.stringify(txData.result))
                             return txData.result;
                         })
                     );
