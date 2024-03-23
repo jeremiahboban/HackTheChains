@@ -1,9 +1,9 @@
 import React from "react";
 import NavBar from "../components/NavBar";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TiltCard from "../components/BenefitsTile.js";
 import ToTopButton from "../components/ToTopButtom.js";
+import ParticleCanvas from "../components/ParticleCanvas.js";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -50,11 +50,19 @@ export default function Home() {
     ];
 
     return (
-        <>
+        <div className="app z-10">
             <NavBar />
-            <div className="bg-blue-500 min-h-screen">
+            {/* Particles Animation */}
+            <div className="flex justify-center items-center h-screen">
+                <h1 className="text-6xl font-bold text-black">
+                    Using Blockchain for Transparency
+                </h1>
+            </div>
+            <ParticleCanvas />
 
+            <div className="bg-blue-500 min-h-screen app-header">
                 <ToTopButton />
+
                 {/* Hero Section */}
                 <div className="bg-blue-500 text-white py-20 px-4">
                     <div className="max-w-4xl mx-auto text-center">
@@ -131,9 +139,9 @@ export default function Home() {
 
                 {/* Footer */}
                 <footer className="bg-blue-500 text-white py-8 text-center">
-                    <p>&copy; 2024 CharityName. All rights reserved.</p>
+                    <p>&copy; 2024 Chainity Charity. All rights reserved.</p>
                 </footer>
             </div>
-        </>
+        </div>
     );
 }

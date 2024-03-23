@@ -87,11 +87,11 @@ const Content = () => {
 
     return (
         <div className="App">
-            <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-xl">
+            <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-xl">
                 <h2 className="text-2xl font-bold mb-4">Solana Transaction</h2>
 
-                    <WalletMultiButton />
-                
+                <WalletMultiButton />
+
                 <p>&nbsp;</p>
                 <div className="mb-4">
                     <label htmlFor="lamports" className="block text-gray-700">

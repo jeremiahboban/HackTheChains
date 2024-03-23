@@ -3,7 +3,6 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
 
-
 .to-top-btn {
     position: fixed;
     bottom: 20px;
@@ -20,9 +19,12 @@
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s;
-  }
-  
-  .to-top-btn:hover {
+}
+
+.to-top-btn:hover {
     opacity: 0.8;
-  }
-  
+}
+
+iframe {
+    display: none;
+}
