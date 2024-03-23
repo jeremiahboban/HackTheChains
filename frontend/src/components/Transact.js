@@ -49,7 +49,7 @@ const Context = ({ children }) => {
 };
 
 const Content = () => {
-    const [lamports, setLamports] = useState(0.1);
+    const [lamports, setLamports] = useState(1);
     const [wallet, setWallet] = useState(
         "5QUmmoVQYRgnzj562PP1p1BiTD3dmmqVbSmKGMqwoSKV"
     );
