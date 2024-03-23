@@ -1,36 +1,55 @@
-import React, { useState, useEffect } from "react";
-import NavBar from "../components/NavBar";
-import { connect } from "../components/WalletAdapter";
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import { WalletModalProvider, WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  TorusWalletAdapter
+} from "@solana/wallet-adapter-wallets";
+import React, {useMemo} from 'react';
+import '@solana/wallet-adapter-react-ui/styles.css';
 
-export function Donate() {
-    const [connected, setConnected] = useState(false);
-    const [connection, setConnection] = useState(null);
+function Donate() {
+  return (
+    <div>
+      
+      <div>
+       <Context>
+     </Context>
+     </div>
+    </div>
+    
+   );
+ }
+ 
+ export default Donate;
+ 
+ const Context = ({ children }) => {
+  // const network = WalletAdapterNetwork.Devnet;
+  // const endpoint = useMemo(() => clusterApiUrl(network), [network])
+  const endpoint = "http://localhost:8899"; // local cluster override
 
-    useEffect(() => {
-        const connectWallet = async () => {
-            const adapter = await connect();
-            if (adapter) {
-                setConnected(true);
-                setConnection(adapter);
-            }
-        };
-        connectWallet();
-    }, []);
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new TorusWalletAdapter()
+    ],
+    []
+  )
 
-    const handleConnectWallet = async () => {
-        const adapter = await connect();
-        if (adapter) {
-            setConnected(true);
-            setConnection(adapter);
-        }
-    };
-
-    return (
-        <div>
-            <NavBar active="donate" />
-          
-        </div>
-    );
+  return (
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>{children}</WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
+  )
 }
 
-export default Donate;
+const Content = () => {
+  return (
+    <div className="App">
+      <WalletMultiButton />
+    </div>
+  )
+}
