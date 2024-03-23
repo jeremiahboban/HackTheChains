@@ -15,20 +15,20 @@ export default function Navbar(props) {
             
                     <Link
                         to="/donate"
-                        className={`text-white ${
-                            props.active === "advisor"
+                        className={`${
+                            props.active === "donate"
                                 ? "bg-white text-blue-500"
-                                : ""
+                                : "text-white"
                         } px-4 py-2 rounded-full font-bold text-xl hover:bg-white hover:text-blue-500`}
                     >
                         Donate
                     </Link>
                     <Link
                         to="/contributions"
-                        className={`text-white ${
-                            props.active === "portfolio"
+                        className={` ${
+                            props.active === "contributions"
                                 ? "bg-white text-blue-500"
-                                : ""
+                                : "text-white"
                         } px-4 py-2 rounded-full font-bold text-xl hover:bg-white hover:text-blue-500`}
                     >
                         Contributions
