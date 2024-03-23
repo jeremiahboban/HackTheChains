@@ -86,13 +86,12 @@ const Content = () => {
                                     body: JSON.stringify({
                                         jsonrpc: '2.0',
                                         id: 1,
-                                        method: 'getTransaction',
+                                        method: 'getConfirmedTransaction',
                                         params: [signature],
                                     }),
                                 }
                             );
                             const txData = await txResponse.json();
-                            console.log(JSON.stringify(txData.result))
                             return txData.result;
                         })
                     );
