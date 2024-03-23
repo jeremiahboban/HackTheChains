@@ -34,6 +34,9 @@ export default function Home() {
             Nullam sed libero sit amet felis aliquam convallis. Cras nec odio semper, tincidunt metus eget, ultricies ligula.
           </p>
         </div>
+        <div>
+          <h1>My Solana App</h1>
+        </div>
       </div>
 
       {/* Projects Section */}
