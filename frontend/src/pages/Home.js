@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import TiltCard from "../components/BenefitsTile.js";
 import ToTopButton from "../components/ToTopButtom.js";
 import ParticleCanvas from "../components/ParticleCanvas.js";
+import Typewriter from "typewriter-effect";
+import "../App.css";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -54,8 +56,21 @@ export default function Home() {
             <NavBar />
             {/* Particles Animation */}
             <div className="flex justify-center items-center h-screen">
-                <h1 className="text-6xl font-bold text-black">
-                    Using Blockchain for Transparency
+                <h1>
+                    <div className="flex items-center text-5xl font-bold text-black">
+                        <Typewriter
+                            options={{
+                                strings: [
+                                    "Transforming Charity with Blockchain",
+                                    "Transparent Donations",
+                                    "Charity Accountability",
+                                ],
+                                autoStart: true,
+                                loop: true,
+                                cursor: ".",
+                            }}
+                        />
+                    </div>
                 </h1>
             </div>
             <ParticleCanvas />

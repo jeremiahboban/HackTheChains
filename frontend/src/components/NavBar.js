@@ -10,7 +10,7 @@ export default function Navbar(props) {
                         to="/"
                         className={`text-white px-4 py-2 rounded-lg font-bold text-xl `}
                     >
-                        Chainity Charity
+                        Charity Clarity
                     </Link>
             
                     <Link
