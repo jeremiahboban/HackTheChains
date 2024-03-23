@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Home from "./pages/Home";
+import Donate from "./pages/Donate";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import { WalletModalProvider, WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import {
@@ -8,8 +9,7 @@ import {
   SolflareWalletAdapter,
   TorusWalletAdapter
 } from "@solana/wallet-adapter-wallets";
-import React, {FC, ReactNode, useMemo} from 'react';
-import './App.css';
+import React, {useMemo} from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/donate" element={<Donate />} />
           </Routes>
       </BrowserRouter>
       <div>
