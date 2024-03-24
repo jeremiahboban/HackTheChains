@@ -50,16 +50,6 @@ export default function Navbar(props) {
                         Impact
                     </Link>
                     <div style={{ width: "600px" }}></div> {/* Spacer */}
-                    <Link
-                        to="/login"
-                        className={`justify-right ${
-                            props.active === "login"
-                                ? "bg-white text-blue-500"
-                                : "text-white"
-                        } px-4 py-2 rounded-full font-bold text-xl hover:bg-white hover:text-blue-500`}
-                    >
-                        Login
-                    </Link>
                 </nav>
             </header>
         </>

@@ -7,7 +7,7 @@ import {
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
-import { clusterApiUrl } from "@solana/web3.js";
+import { clusterApiUrl, PublicKey } from "@solana/web3.js";
 import moment from "moment";
 
 function Contribute() {
@@ -35,8 +35,10 @@ const Context = ({ children }) => {
 };
 
 const Content = () => {
+    const publicKey = new PublicKey(
+        "5QUmmoVQYRgnzj562PP1p1BiTD3dmmqVbSmKGMqwoSKV"
+    );
     const [transactionHistory, setTransactionHistory] = useState([]);
-    const { publicKey } = useWallet();
     const [isLoading, setIsLoading] = useState(true);
     const [signatures, setSignatures] = useState([]);
     const [profitArray, setProfitArray] = useState([]);
@@ -220,7 +222,6 @@ const Content = () => {
                                             {donorAddresses[index]}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            
                                             {(
                                                 profitArray[index] *
                                                 0.000000001 *

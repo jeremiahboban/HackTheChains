@@ -69,12 +69,12 @@ export default function Impact() {
         labels: ["Total Donations", "To Beneficiaries", "Lost to Fees"],
         datasets: [
             {
-                label: "# of Votes",
+                label: "USD",
                 data: [0, 0, 0],
                 backgroundColor: [
-                    "rgba(255, 99, 132, 1)",
-                    "rgba(54, 235, 162, 1)",
-                    "rgba(255, 206, 86, 1)",
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 235, 162, 0.5)",
+                    "rgba(255, 206, 86, 0.5)",
                 ],
                 borderColor: [
                     "rgba(255, 99, 132, 1)",
@@ -148,15 +148,19 @@ export default function Impact() {
         };
 
         const updatedPieData = {
-            labels: ["Total Donations", "Total to Beneficiaries", "Lost to Fees"],
+            labels: [
+                "Total Donations",
+                "Total to Beneficiaries",
+                "Lost to Fees",
+            ],
             datasets: [
                 {
-                    label: "# of Votes",
+                    label: "$",
                     data: [totalToCharity, totalToBeneficiary, totalFees], // Update data here
                     backgroundColor: [
                         "rgba(3, 232, 252, 1)",
                         "rgba(59, 130, 246, 1)",
-                        "rgba(255, 206, 86, 1)",
+                        "rgba(245, 37, 37, 1)",
                     ],
                     borderColor: [
                         "rgba(255, 99, 132, 1)",
@@ -187,6 +191,14 @@ export default function Impact() {
                     <Pie data={piedata} />
                 </div>
             </div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h1 className="text-lg mb-4 mt-8 ml-8">
+                If this page doesn't load, please checkout the contributions
+                page and come back.
+            </h1>
         </>
     );
 }

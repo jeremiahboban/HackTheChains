@@ -39,7 +39,7 @@ export default function Home() {
             imageUrl:
                 "https://charity-chain.com/wp-content/uploads/2022/01/Costumer.svg",
             title: "Know Your Charity",
-            text: "Saying no to illicit activities, Charity, organization, donor or trader, everyone will be checked. Only exchanges with checks in place will be used.",
+            text: "Donors can see exactly where their money is going and how it is being used. This will increase the trust between the charity and the donor.",
         },
         {
             imageUrl:
@@ -115,15 +115,29 @@ export default function Home() {
                             <h2 className="text-3xl font-bold mb-6 text-blue-500">
                                 Our Mission
                             </h2>
-                            <p className="text-2xl mb-6">
-                                Support our cause by donating with
-                                cryptocurrency on the Solana blockchain. Ensure
-                                transparency with every donation.
+
+                            <p className="text-lg mb-6">
+                                At Charity Clarity, we're driven by a singular
+                                mission: to revolutionize charity and
+                                philanthropy through transparency and
+                                accountability.
                             </p>
-                            <p className="text-2xl">
-                                Nullam sed libero sit amet felis aliquam
-                                convallis. Cras nec odio semper, tincidunt metus
-                                eget, ultricies ligula.
+                            <p className="text-lg mb-6">
+                                The final destination of every donation should
+                                be as clear as the path it took to get there.
+                                That's why we're leveraging blockchain
+                                technology to create a new standard of
+                                transparency in charitable giving.
+                            </p>
+                            <p className="text-lg">
+                                Charity fraud is an unfortunate reality that
+                                undermines the generosity of well-intentioned
+                                donors and hampers the effectiveness of
+                                charitable organizations. Every donation made
+                                through our platform is securely recorded on the
+                                immutable Solana blockchain, providing donors
+                                with unprecedented transparency into how their
+                                contributions are being utilized.
                             </p>
                         </div>
                     </div>
