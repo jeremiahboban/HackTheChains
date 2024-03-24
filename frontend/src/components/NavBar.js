@@ -49,7 +49,7 @@ export default function Navbar(props) {
                     >
                         Impact
                     </Link>
-                    <div style={{ width: "500px" }}></div> {/* Spacer */}
+                    <div style={{ width: "600px" }}></div> {/* Spacer */}
                     <Link
                         to="/login"
                         className={`justify-right ${

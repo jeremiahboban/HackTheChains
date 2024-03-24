@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
-import {
-    WalletAdapterNetwork,
-} from "@solana/wallet-adapter-base";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
     ConnectionProvider,
     WalletProvider,
     useWallet,
 } from "@solana/wallet-adapter-react";
-import {
-    WalletModalProvider,
-} from "@solana/wallet-adapter-react-ui";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 import moment from "moment";
@@ -46,7 +42,7 @@ const Content = () => {
     const [profitArray, setProfitArray] = useState([]);
     const [blockTimes, setBlockTimes] = useState([]);
     const [donorAddresses, setDonorAddresses] = useState([]);
-    const [expandedSignatures, setExpandedSignatures] = useState([]);
+    const [transactionFees, setTransactionFees] = useState([]);
 
     useEffect(() => {
         if (!publicKey) return;
@@ -72,6 +68,7 @@ const Content = () => {
                 let profitTemp = [];
                 let signatureTemp = [];
                 let donorTemp = [];
+                let feesTemp = [];
 
                 if (Array.isArray(transactions)) {
                     const detailedTransactions = await Promise.all(
@@ -95,22 +92,38 @@ const Content = () => {
                             const txData = await txResponse.json();
                             console.log("txResponse:", JSON.stringify(txData));
 
-                            const signature =
-                                txData?.result.transaction.signatures[0] ||
-                                "N/A";
-                            const profit =
-                                txData?.result.meta.postBalances[1] -
-                                    txData?.result.meta.preBalances[1] || "N/A";
-                            const blockTime =
-                                txData?.result?.blockTime || "N/A";
                             const donorAddress =
                                 txData?.result.transaction.message
                                     .accountKeys[0] || "N/A";
+                            let profit = 0;
+                            if (
+                                donorAddress ===
+                                "5QUmmoVQYRgnzj562PP1p1BiTD3dmmqVbSmKGMqwoSKV"
+                            ) {
+                                profit =
+                                    -1 * txData?.result.meta.postBalances[1] +
+                                        txData?.result.meta.preBalances[1] ||
+                                    "N/A";
+                            } else {
+                                profit =
+                                    txData?.result.meta.postBalances[1] -
+                                        txData?.result.meta.preBalances[1] ||
+                                    "N/A";
+                            }
+                            const signature =
+                                txData?.result.transaction.signatures[0] ||
+                                "N/A";
+
+                            const blockTime =
+                                txData?.result?.blockTime || "N/A";
+
+                            const fee = txData?.result.meta.fee || "N/A";
 
                             signatureTemp.push(signature);
                             profitTemp.push(profit);
                             blocktimeTemp.push(blockTime);
                             donorTemp.push(donorAddress);
+                            feesTemp.push(fee);
                         })
                     );
 
@@ -118,6 +131,7 @@ const Content = () => {
                     setProfitArray(profitTemp);
                     setBlockTimes(blocktimeTemp);
                     setDonorAddresses(donorTemp);
+                    setTransactionFees(feesTemp);
 
                     setTransactionHistory(detailedTransactions);
                 } else {
@@ -142,19 +156,13 @@ const Content = () => {
         console.log("profitArray", profitArray);
         console.log("blockTimes", blockTimes);
         console.log("donorAddresses", donorAddresses);
+        console.log("transactionFees", transactionFees);
+        localStorage.setItem("profitArray", JSON.stringify(profitArray));
+        localStorage.setItem(
+            "transactionFees",
+            JSON.stringify(transactionFees)
+        );
     }, [signatures, profitArray, blockTimes, donorAddresses]);
-
-    const toggleSignatureExpansion = (index) => {
-        setExpandedSignatures((prevState) => {
-            const newState = [...prevState];
-            newState[index] = !prevState[index];
-            return newState;
-        });
-    };
-
-    const abbreviateSignature = (signature) => {
-        return `${signature.slice(0, 6)}...`;
-    };
 
     return (
         <div className="App">
@@ -212,7 +220,7 @@ const Content = () => {
                                             {donorAddresses[index]}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            $
+                                            
                                             {(
                                                 profitArray[index] *
                                                 0.000000001 *
