@@ -46,20 +46,19 @@ const Context = ({ children }) => {
         <>
             <NavBar />
             <div className="flex flex-row">
-                <div className="bg-white w-1/2 py-10">
+                <div className="bg-white w-2/3 py-10">
                     <div className="max-w-4xl mx-5 px-6 lg:px-10">
                         <h2 className="text-3xl font-bold mb-6 text-blue-500">
                             How Donating Works
                         </h2>
-                        <p className="text-lg">
+                        <p className="text-xl pb-6">
                             Thank you for deciding to donate to our cause. To
-                            donate we strictly use
+                            donate we strictly use SOL to maintain anonymity and
+                            transparency. Please follow the steps below to
+                            donate.
                         </p>
-                        <p className="text-lg mb-6">
-                            SOL to maintain anonymity and transparency. Please
-                            follow the steps below to donate.
-                        </p>
-                        <p className="text-lg">
+
+                        <p className="text-xl">
                             <ol className="list-decimal">
                                 <li className="mb-2 ml-12">
                                     Connect your wallet to the Solana
@@ -76,10 +75,15 @@ const Context = ({ children }) => {
                         </p>
                     </div>
                 </div>
-                <img className="w-1/2 max-h-500" src={"logo.png"} />
+                <img className="w-1/4 max-w-full max-h-full" src={"logo.png"} />
             </div>
-            <div>
+            <div className="flex flex-row">
                 <Transact />
+                <div style={{ width: "200px" }}></div> {/* Spacer */}
+                <img
+                    className="w-2/4 max-w-full max-h-full"
+                    src={"charities.png"}
+                />
             </div>
         </>
     );

@@ -40,14 +40,14 @@ export default function Navbar(props) {
                         Contributions
                     </Link>
                     <Link
-                        to="/contributions"
+                        to="/impact"
                         className={` ${
-                            props.active === "contributions"
+                            props.active === "impact"
                                 ? "bg-white text-blue-500"
                                 : "text-white"
                         } px-4 py-2 rounded-full font-bold text-xl hover:bg-white hover:text-blue-500`}
                     >
-                        Contributions
+                        Impact
                     </Link>
                     <div style={{ width: "500px" }}></div> {/* Spacer */}
                     <Link
