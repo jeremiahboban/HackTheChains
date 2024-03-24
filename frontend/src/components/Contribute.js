@@ -9,6 +9,8 @@ import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl, PublicKey } from "@solana/web3.js";
 import moment from "moment";
+import { ChainlinkPlugin } from "@chainsafe/web3-plugin-chainlink";
+import { Web3 } from "web3";
 
 function Contribute() {
     return (
@@ -45,6 +47,7 @@ const Content = () => {
     const [blockTimes, setBlockTimes] = useState([]);
     const [donorAddresses, setDonorAddresses] = useState([]);
     const [transactionFees, setTransactionFees] = useState([]);
+    const [conversionRate, setConversionRate] = useState(null);
 
     useEffect(() => {
         if (!publicKey) return;

@@ -29,8 +29,6 @@ function Donate() {
 export default Donate;
 
 const Context = ({ children }) => {
-    // const network = WalletAdapterNetwork.Devnet;
-    // const endpoint = useMemo(() => clusterApiUrl(network), [network])
     const endpoint = "http://localhost:8899"; // local cluster override
 
     const wallets = useMemo(
