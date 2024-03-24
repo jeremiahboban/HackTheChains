@@ -28,3 +28,7 @@
 iframe {
     display: none;
 }
+
+.chart-container {
+    height: 700px; /* Adjust the height as needed */
+}

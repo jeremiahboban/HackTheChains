@@ -24,6 +24,22 @@ ChartJS.register(
 
 export const baroptions = {
     responsive: true,
+    scales: {
+        xAxes: [
+            {
+                gridLines: {
+                    display: false, // Hide x-axis gridlines
+                },
+            },
+        ],
+        yAxes: [
+            {
+                gridLines: {
+                    display: false, // Hide y-axis gridlines
+                },
+            },
+        ],
+    },
     plugins: {
         legend: {
             display: false,
@@ -45,8 +61,9 @@ export const bardata = {
             label: "Dataset 1",
             data: [1, 2],
             backgroundColor: [
-                "rgba(0, 255, 0, 0.5)", // Color for Total Donations
-                "rgba(54, 80, 235, 0.5)", // Color for Amount Distributed to Beneficiaries
+                "rgba(255, 99, 132, 0.2)", // Color for Total Donations
+                "rgba(54, 162, 235, 0.2)", // Color for Amount Distributed to Beneficiaries
+                ,
             ],
         },
     ],
@@ -57,7 +74,7 @@ export const piedata = {
     datasets: [
         {
             label: "# of Votes",
-            data: [12, 19, 3, 5, 2, 3],
+            data: [12, 19, 3],
             backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
                 "rgba(54, 162, 235, 0.2)",
@@ -84,11 +101,11 @@ export default function Impact() {
         <>
             <NavBar />
             <h1 className="text-4xl font-bold mb-4 mt-8 ml-8">Impact</h1>
-            <div className="flex flex-row">
-                <div className="w-1/2 mt-12 ml-8">
+            <div className="flex flex-row flex-wrap justify-evenly">
+                <div className="flex-grow max-w mt-12 ml-8">
                     <Bar options={baroptions} data={bardata} />
                 </div>
-                <div className="w-1/2 mt-12">
+                <div className="flex-grow max-w mt-12 mx-8">
                     <Pie data={piedata} />
                 </div>
             </div>
