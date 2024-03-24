@@ -5,8 +5,8 @@
 
 Welcome to our Charitable Donations Transparency Project! This project utilizes the Solana blockchain to ensure transparency and accountability in charitable donations. By leveraging blockchain technology, we aim to provide donors with real-time visibility into how their contributions are being utilized by charities.
 
-## Try me: 
-[charityclarity.us](https://www.charityclarity.us)
+## Try Me: 
+[www.charityclarity.us](https://www.charityclarity.us)
 
 ## Table of Contents
 
