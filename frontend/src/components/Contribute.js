@@ -13,11 +13,7 @@ import {
     WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
-import {
-    clusterApiUrl,
-    PublicKey,
-    Transaction,
-} from "@solana/web3.js";
+import { clusterApiUrl, PublicKey, Transaction } from "@solana/web3.js";
 
 function Contribute() {
     return (
@@ -53,56 +49,60 @@ const Content = () => {
 
         async function fetchTransactionHistory() {
             try {
-                const response = await fetch(
-                    `https://api.devnet.solana.com/`,
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            jsonrpc: '2.0',
-                            id: 1,
-                            method: 'getConfirmedSignaturesForAddress2',
-                            params: [publicKey.toBase58(), { limit: 10 }],
-                        }),
-                    }
-                );
+                const response = await fetch(`https://api.devnet.solana.com/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        jsonrpc: "2.0",
+                        id: 1,
+                        method: "getConfirmedSignaturesForAddress2",
+                        params: [publicKey.toBase58(), { limit: 10 }],
+                    }),
+                });
 
                 const responseData = await response.json();
                 const transactions = responseData.result;
-                console.log( JSON.stringify(transactions))
+                console.log(JSON.stringify(transactions));
+                transactions.map((transaction) => {
+                    console.log("data:", transactions[0]["signature"]);
+                });
 
                 if (Array.isArray(transactions)) {
                     const detailedTransactions = await Promise.all(
-                        transactions.map(async (signature) => {
+                        transactions.map(async (transaction) => {
                             const txResponse = await fetch(
                                 `https://api.devnet.solana.com/`,
                                 {
-                                    method: 'POST',
+                                    method: "POST",
                                     headers: {
-                                        'Content-Type': 'application/json',
+                                        "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
-                                        jsonrpc: '2.0',
+                                        jsonrpc: "2.0",
                                         id: 1,
-                                        method: 'getConfirmedTransaction',
-                                        params: [signature],
+                                        method: "getTransaction",
+                                        params: [transaction["signature"]],
                                     }),
                                 }
                             );
+                            console.log("txResponse:", txResponse);
                             const txData = await txResponse.json();
                             return txData.result;
                         })
                     );
                     setTransactionHistory(detailedTransactions);
                 } else {
-                    console.error('Invalid transaction history data:', transactions);
+                    console.error(
+                        "Invalid transaction history data:",
+                        transactions
+                    );
                 }
 
                 setIsLoading(false);
             } catch (error) {
-                console.error('Error fetching transaction history:', error);
+                console.error("Error fetching transaction history:", error);
                 setIsLoading(false);
             }
         }
@@ -116,15 +116,28 @@ const Content = () => {
                 <div>Loading...</div>
             ) : (
                 <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-xl">
-                    <h2 className="text-2xl font-bold mb-4">Transaction History</h2>
+                    <h2 className="text-2xl font-bold mb-4">
+                        Transaction History
+                    </h2>
                     <ul>
                         {transactionHistory.map((transaction, index) => (
                             <li key={index}>
-                                <span>Transaction ID: {transaction?.signatures?.[0] || 'N/A'}</span>
+                                <span>
+                                    Transaction ID:{" "}
+                                    {transaction?.signatures?.[0] || "N/A"}
+                                </span>
                                 <br />
-                                <span>Sender: {transaction?.message?.accountKeys?.[0] || 'N/A'}</span>
+                                <span>
+                                    Sender:{" "}
+                                    {transaction?.message?.accountKeys?.[0] ||
+                                        "N/A"}
+                                </span>
                                 <br />
-                                <span>Receiver: {transaction?.message?.accountKeys?.[1] || 'N/A'}</span>
+                                <span>
+                                    Receiver:{" "}
+                                    {transaction?.message?.accountKeys?.[1] ||
+                                        "N/A"}
+                                </span>
                                 <br />
                                 {/* Add more details as needed */}
                             </li>
@@ -134,6 +147,4 @@ const Content = () => {
             )}
         </div>
     );
-    
-    
 };
